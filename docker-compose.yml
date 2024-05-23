@@ -1,0 +1,22 @@
+version: '3.4'
+
+volumes:
+  crypto-investment-db:
+
+services:
+  redis:
+    image: redis:7.0
+    ports:
+      - '6380:6379'
+
+  db:
+    image: postgres:16
+    command: -c fsync=off
+    volumes:
+      - crypto-investment-db:/var/lib/postgresql
+    ports:
+      - '5433:5432'
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=crypto-investment
