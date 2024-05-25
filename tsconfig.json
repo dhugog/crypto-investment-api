@@ -23,8 +23,9 @@
     "resolveJsonModule": true,
     "baseUrl": ".",
     "forceConsistentCasingInFileNames": true,
-    "strict": true
+    "strict": true,
+    "strictPropertyInitialization": false,
   },
   "exclude": ["node_modules"],
-  "include": ["./src/**/*.ts"]
+  "include": ["./src/**/*.ts", "src/middlewares/auth.middlewarets"]
 }
