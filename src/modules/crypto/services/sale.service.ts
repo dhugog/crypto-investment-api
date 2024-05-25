@@ -23,7 +23,7 @@ export class SaleService {
     const { buy } = await this.cryptoPriceService.execute({ currency });
 
     return this.addBalanceService.execute({
-      amount: Math.round(amount * buy),
+      amount: Math.floor(amount * buy),
       fromCurrency: currency,
       toCurrency: Currency.BRL,
       userId,

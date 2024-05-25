@@ -14,7 +14,13 @@ export class SignInService {
 
     const user = await repository.findOne({ where: { email: input.email } });
 
-    if (!user || (await Encryption.comparePassword(input.password, user.password))) {
+    if (!user) {
+      throw new BadRequestError('Invalid email or password');
+    }
+
+    const isPasswordValid = await Encryption.comparePassword(user.password, input.password);
+
+    if (!isPasswordValid) {
       throw new BadRequestError('Invalid email or password');
     }
 
